@@ -8,7 +8,7 @@ export const SITE = "https://NaijunWang.github.io";
 // NUMBER TWO:
 // if repo name is <your-github-username>.github.io set to '/'
 // otherwise set to '/<your-repo-name>'
-export const BASE = '/';
+export const BASE = '';
 
 // MORE SETTINGS:
 
@@ -64,7 +64,7 @@ export const SOCIAL_LINKS: {
 export const MANUAL_DARK_MODE = true;
 
 // if true, will enable the search functionality
-export const SEARCH_ENABLED = false;
+export const SEARCH_ENABLED = true;
 
 // if true, will show images in the posts
 export const SHOW_IMAGES = true;
