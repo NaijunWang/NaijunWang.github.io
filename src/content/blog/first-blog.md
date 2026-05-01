@@ -5,4 +5,4 @@ pubDate: 2026-04-28
 tags: ["general"]
 ---
 
-Testing the build process. If you can see this, the blog website is now working!
+Testing the build process. If you can see this, the website is now working!
