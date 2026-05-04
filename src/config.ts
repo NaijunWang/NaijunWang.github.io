@@ -13,7 +13,7 @@ export const BASE = '';
 // MORE SETTINGS:
 
 // will be used for the the title and meta tags and in the header (if SITE_NAME is left blank)
-export const SITE_TITLE = "Naijun's Personal Blog";
+export const SITE_TITLE = "Naijun's Blog";
 
 // will be used in the meta tags (and for example shown in search results)
 export const SITE_DESCRIPTION = "Welcome to my blog!";
@@ -28,7 +28,7 @@ export const NAME = "Naijun Wang";
 export const LICENSE = "MIT licensed.";
 
 // will be used to identify your bluesky account, so that likes and comments can be shown on your posts
-export const BLUESKY_IDENTIFIER = "flo-bit.dev";
+export const BLUESKY_IDENTIFIER = "";
 
 export const SOURCE_LINK = 'https://github.com/NaijunWang/NaijunWang.github.io';
 
