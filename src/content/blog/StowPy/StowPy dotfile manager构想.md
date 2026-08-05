@@ -2,7 +2,7 @@
 title: "StowPy dotfile manager 构想"
 description: "关于这个项目的初步构思以及功能设想"
 pubDate: 2026-08-02
-tags: ["个人项目", "StowPy", "开发"]
+tags: ["个人项目", "StowPy"]
 ---
 
 ## 问题
