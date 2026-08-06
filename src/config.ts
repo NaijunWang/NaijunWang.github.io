@@ -27,9 +27,6 @@ export const NAME = "Naijun Wang";
 // will be used in the footer as the license of the content (e.g. "All right reserved" or "CC-BY-SA 4.0")
 export const LICENSE = "MIT licensed.";
 
-// will be used to identify your bluesky account, so that likes and comments can be shown on your posts
-export const BLUESKY_IDENTIFIER = "";
-
 export const SOURCE_LINK = 'https://github.com/NaijunWang/NaijunWang.github.io';
 
 // will be used to set the base color of the blog
@@ -48,11 +45,9 @@ export const SOCIAL_LINKS: {
   YOUTUBE_URL?: string;
   SUBSTACK_URL?: string;
   EMAIL?: string;
-  BLUESKY_URL?: string;
   SHOW_RSS?: boolean;
 } = {
   SHOW_RSS: true,
-  BLUESKY_URL: "",
   GITHUB_URL: "https://github.com/NaijunWang",
   EMAIL: "",
 };
