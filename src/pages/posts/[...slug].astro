@@ -10,6 +10,9 @@ import { getBlogPosts } from "src/utils";
 import Tag from "$components/Tag.astro";
 import { SHOW_IMAGES } from "../../config.ts";
 
+// 1. 导入你的 Bilibili 组件（路径与你在 src/embeds/index.ts 中导出的一致）
+import { Bilibili } from "../../embeds";
+
 export async function getStaticPaths() {
   const posts = await getBlogPosts(true);
   return posts.map((post: any) => ({
@@ -58,7 +61,7 @@ if (replacedHero && !images[replacedHero])
       </div>
 
       <h1 class="mt-4">{post.data.title}</h1>
-      <Content />
+      <Content components={{ Bilibili }} />
     </BlogPost>
   </main>
   <Footer />

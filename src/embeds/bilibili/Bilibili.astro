@@ -1,0 +1,113 @@
+---
+export interface Props extends astroHTML.JSX.HTMLAttributes {
+  id: string; // 传入 BVID
+  page?: number; // 官方参数 p：多 P 视频集数，默认 1
+  poster?: string; // 手动传入自定义静态封面
+  title?: string;
+  danmaku?: boolean; // 是否开启弹幕，默认 false (关闭)
+  t?: number; // 跳转指定秒数 (单位：秒，如 t={90} 表示从 1分30秒 开始)
+  autoplay?: boolean;
+  muted?: boolean;
+}
+
+const {
+  id,
+  page = 1,
+  poster,
+  title = "Bilibili Video",
+  danmaku = false,
+  t = 0,
+  autoplay = false,
+  muted = false,
+  ...attrs
+} = Astro.props as Props;
+
+// 构造官方标准的 QueryString 参数组
+const queryParams = new URLSearchParams({
+  bvid: id,
+  p: page.toString(),
+  high_quality: "1",
+  danmaku: danmaku ? "1" : "0",
+  autoplay: autoplay ? "1" : "0",
+  muted: muted ? "1" : "0",
+});
+
+// 如果传了跳转时间 t，才拼接 t 参数
+if (t > 0) {
+  queryParams.append("t", t.toString());
+}
+
+const embedSrc = `//player.bilibili.com/player.html?${queryParams.toString()}`;
+---
+
+<div class="bilibili-container" {...attrs}>
+  <!-- 1. 未点击时：渲染静态封面与播放按钮 -->
+  <div 
+    class="bilibili-poster" 
+    style={poster ? `background-image: url('${poster}');` : 'background-color: #000;'}
+    onclick="this.nextElementSibling.src = this.getAttribute('data-src'); this.style.display='none'; this.nextElementSibling.style.display='block';"
+    data-src={embedSrc}
+  >
+    <button class="bilibili-playbtn" aria-label={title}>
+      <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- 2. 点击后注入官方原生 iframe -->
+  <iframe
+    src="about:blank"
+    title={title}
+    class="bilibili-iframe"
+    style="display: none;"
+    scrolling="no"
+    border="0"
+    frameborder="no"
+    framespacing="0"
+    allowfullscreen="true"
+  ></iframe>
+</div>
+
+<style>
+  .bilibili-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: #000;
+  }
+  .bilibili-poster {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bilibili-poster:hover .bilibili-playbtn {
+    transform: scale(1.1);
+    background-color: #00aeec;
+  }
+  .bilibili-playbtn {
+    border: none;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bilibili-iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
