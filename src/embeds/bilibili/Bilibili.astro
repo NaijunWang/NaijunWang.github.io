@@ -57,14 +57,11 @@ const embedSrc = `//player.bilibili.com/player.html?${queryParams.toString()}`;
 
   <!-- 2. 点击后注入官方原生 iframe -->
   <iframe
-    src="about:blank"
-    title={title}
-    class="bilibili-iframe"
-    style="display: none;"
-    scrolling="no"
-    border="0"
-    frameborder="no"
-    framespacing="0"
+    src="about:blank" 
+    title={title} 
+    class="bilibili-iframe" 
+    style="display: none; border: none;" 
+    allow="fullscreen"
     allowfullscreen="true"
   ></iframe>
 </div>
